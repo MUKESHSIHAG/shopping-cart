@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/shopping');
 
 var products = [
-        new Product({
+    new Product({
         imagePath: 'https://upload.wikimedia.org/wikipedia/en/5/5e/Gothiccover.png',
         title: 'Gothic video Game',
         description: 'Awesome game!!!!',

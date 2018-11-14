@@ -13,5 +13,6 @@ app.use(express.static('./public'));
 todoController(app);
 
 //listen to  port
-app.listen(5000);
-console.log('you are listening to port 5000');
+app.listen(process.env.PORT || 5000, function(){
+    console.log("its running on 5000");
+});

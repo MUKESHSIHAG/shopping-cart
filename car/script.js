@@ -42,3 +42,22 @@ $('#create-form').on('submit', function(event){
         }
     });
 });
+
+//update/put
+$('table').on('click','.update-button', function(){
+    var rowEl = $(this).closest('tr');
+    var id = rowEl.find('.id').text();
+    var newName = rowEl.find('.name').val();
+
+    $.ajax({
+        url: '/products/' + id,
+        method: 'put',
+        contenType: 'application/json',
+        data: JSON.stringify({newName: newName}),
+        success: function(res){
+            console.log(res);
+            $('#get-button').click();
+        }
+
+    });
+});

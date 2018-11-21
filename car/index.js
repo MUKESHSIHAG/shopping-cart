@@ -27,13 +27,28 @@ app.get('/products', (req,res) => {
 });
 
 app.post('/products', (req,res) => {
-    var productName = req.body.name;
+    var productName = String(req.body.name);
     currentId++;
     products.push({
         id: currentId,
         name: productName
     });
     res.send('successfully created');
+});
+
+
+app.put('/products/:id',function(req,res){
+    var id = req.params.id;
+    var newName = req.body.newName;
+
+    var found = false;
+
+    products.forEach(function(product,index){
+        if(!found && product.id === Number(id)){
+            product.name = newName;
+        }
+        return res.send('name is successfully updated');
+    });
 });
 
 app.listen(PORT, function(){
